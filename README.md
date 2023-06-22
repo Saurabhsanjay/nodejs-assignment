@@ -14,10 +14,14 @@ This repository contains the source code for a Node.js project that focuses on R
 
 The folder structure of this project is organized as follows:
 
-```src
+```
+
+src
 ├── db
 │   ├── controller
 │   │   └── (controller files for handling requests and responses)
+│   ├── middleware
+│   │   └── (middleware files for handling the routes and server error)
 │   ├── routes
 │   │   └── (route files for defining API endpoints)
 │   ├── services
@@ -25,7 +29,9 @@ The folder structure of this project is organized as follows:
 │   ├── models
 │   │   └── (model files for defining data schemas and interacting with databases)
 │   └── (database connection configuration files)
-└── (other source code files)```
+└── (other source code files)
+
+```
 
 
 
