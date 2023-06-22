@@ -34,7 +34,33 @@ src
 
 ```
 
+## API_ENDPOINTS 
+```  
+**BASE_URL** : http://localhost:8080
 
+// create new user
+POST {{BASE_URL}}/v1/users
+{
+   firstName:",
+   lastName:",
+   address:",
+    city:",
+    email:",
+   password:",
+}
+
+// List all users
+GET {{BASE_URL}}/v1/users
+
+// Search users
+GET {{BASE_URL}}/v1/users/search?searchTerm=saurabh
+
+// Proxy request
+GET {{BASE_URL}}/v1/proxy?location=akola
+
+
+
+  ```
 
 - **src**: This folder contains all the source code files for the project.
   - **db**: This folder contains the files related to the database operations.
