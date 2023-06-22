@@ -1,11 +1,11 @@
 # Redis Caching and Multiple Database Query Project
 
-![Node.js](https://img.shields.io/badge/Node.js-v14.17.1-green)
-![Redis](https://img.shields.io/badge/Redis-v6.2.4-red)
-![Express](https://img.shields.io/badge/Express-v4.17.1-blue)
+![Node.js](https://img.shields.io/badge/Node.js-v16.19.0-green)
+![Redis](https://img.shields.io/badge/Redis-v7.0.1-red)
+![Express](https://img.shields.io/badge/Express-v4.18.2-blue)
 ![Sequelize](https://img.shields.io/badge/Sequelize-v6.6.5-orange)
-![Mongoose](https://img.shields.io/badge/Mongoose-v6.1.4-yellow)
-![MongoDB](https://img.shields.io/badge/MongoDB-v4.4.6-green)
+![Mongoose](https://img.shields.io/badge/Mongoose-v7.3.1-yellow)
+![MongoDB](https://img.shields.io/badge/MongoDB-v6.0.0-green)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
 
 This repository contains the source code for a Node.js project that focuses on Redis caching and performing multiple database queries.
@@ -40,6 +40,7 @@ src
     - **controller**: This folder contains the controller files responsible for handling requests and responses from the API.
     - **routes**: This folder contains the route files that define the API endpoints.
     - **services**: This folder contains the service files responsible for implementing the business logic.
+    - **middlewares**: This folder contains the error handling files for the routes and server
     - **models**: This folder contains the model files that define the data schemas and interact with the databases.
   - *(other source code files)*: This folder may contain other necessary source code files for the project.
 - *(other project files and configurations)*: This section represents any other files or configurations specific to your project.
