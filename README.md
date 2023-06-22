@@ -7,6 +7,7 @@
 ![Mongoose](https://img.shields.io/badge/Mongoose-v7.3.1-yellow)
 ![MongoDB](https://img.shields.io/badge/MongoDB-v6.0.0-green)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![AWS](https://img.shields.io/badge/AWS-yellow)
 
 This repository contains the source code for a Node.js project that focuses on Redis caching and performing multiple database queries.
 
