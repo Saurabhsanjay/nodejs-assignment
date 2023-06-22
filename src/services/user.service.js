@@ -80,7 +80,8 @@ async function getUsers() {
       });
     });
 
-    if (cachedUsers.length > 0) {
+    if (cachedUsers) {
+      console.log(cachedUsers,"redis")
       return cachedUsers;
     }
 
@@ -90,8 +91,8 @@ async function getUsers() {
     const users = [...sqlUsers, ...mongoUsers];
 
     redisClient.set("users", JSON.stringify(users));
-    redisClient.setex("users", 60);
-
+    redisClient.setex("users", 1800);
+ 
     return users;
   } catch (error) {
     console.error(error);
@@ -134,6 +135,7 @@ async function searchUsersSql(searchTerm) {
     });
 
     if (cachedResults) {
+      console.log("Cahced",cachedResults)
       return cachedResults;
     }
 
