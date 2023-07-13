@@ -26,28 +26,12 @@ async function createUser(req, res) {
 //for getting the alluserslist
 async function getUsers(req, res) {
   try {
-    redisClient.get("users", async (err, result) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ error: "Failed to fetch users" });
-      }
-
-      if (result) {
-        const users = JSON.parse(result);
-        return res.send({ users });
-      }
-
-      const sqlUsers = await User.findAll();
-      const mongoUsers = await mongoUser.find();
-const users=[...sqlUsers,...mongoUsers]
-      redisClient.setex("users", 10, JSON.stringify(users), (err) => {
-        if (err) {
-          console.error(err);
-        }
-      });
-
-      res.send(users);
-    });
+    const users = await userService.getUsers();
+    
+    if (!users || users.length === 0) {
+      return res.status(200).json({ message: "No users available" });
+    }
+    res.json(users);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to fetch users" });
@@ -57,9 +41,8 @@ const users=[...sqlUsers,...mongoUsers]
 //for deleting the user
 async function deleteUser(req, res) {
   try {
-
     const { id } = req.params;
-    
+
     await userService.deleteUser(id);
     res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {

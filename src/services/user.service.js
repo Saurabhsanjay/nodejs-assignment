@@ -66,23 +66,34 @@ async function createUser(firstName, lastName, address, city, email, password) {
   }
 }
 
-//get all users service using redis
+//proxy api 
+//payment api and 1 cr rupees=> 
+//attackers
+//api secure 
+
+
+//render =>512mb 512mb use
+//database =>mongodb 
+
+//get all users service 
+const NodeCache = require("node-cache");
+const userCache = new NodeCache({ stdTTL: 60 });
+
 async function getUsers() {
   try {
-    let cachedUsers = await new Promise((resolve, reject) => {
-      redisClient.get("users", (err, result) => {
-        if (err) {
-          console.error(err);
-          reject(err);
+    const cachedUsers = await new Promise((resolve, reject) => {
+      redisClient.get("users", (error, result) => {
+        if (error) {
+          reject(error);
         } else {
-          resolve(JSON.parse(result) || []);
+          resolve(result);
         }
       });
     });
 
     if (cachedUsers) {
-      console.log(cachedUsers,"redis")
-      return cachedUsers;
+      console.log("get from cache");
+      return JSON.parse(cachedUsers);
     }
 
     const sqlUsers = await User.findAll();
@@ -90,15 +101,18 @@ async function getUsers() {
 
     const users = [...sqlUsers, ...mongoUsers];
 
-    redisClient.set("users", JSON.stringify(users));
-    redisClient.setex("users", 1800);
- 
+    redisClient.set("users", JSON.stringify(users),"EX",30);
+    console.log("set cache");
+
     return users;
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch users");
   }
 }
+
+
+
 
 //delete user service
 async function deleteUser(id) {

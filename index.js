@@ -37,7 +37,7 @@ app.use(handleRouteNotFound);
 app.use(errorHandler);
 
 
-// Sync the model with the database
+//Sync the model with the database
 (async () => {
   try {
     await sequelize.sync();
@@ -51,7 +51,7 @@ app.use(errorHandler);
 
 
 
-// for Starting the server
+// // for Starting the server
 const PORT = process.env.PORT || 3000;
 
   app.listen(PORT, async() => {
@@ -60,3 +60,28 @@ const PORT = process.env.PORT || 3000;
   });
 
 
+// {table:"user",columns:["name","lastName"],where:[{col:"id",value:"1"}]}
+
+// "select name,lastName from user where id = '1'";
+
+
+
+
+// const dynamic=async()=>{
+//   const {tablename}=req.body;
+// const userModel=require(`../models/${tablename}`)
+
+// if(!userModel){
+//   return(404);
+// }
+
+//   const data=await userModel.find({});
+
+    
+//   return data(200);
+
+// }
+// var a={firstname:'saurabh',lastname:"ubale"}
+// Object.values(a)[1];
+
+// a.firstname;
